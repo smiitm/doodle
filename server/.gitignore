@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+.env
+*.env
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+
+# Logs & caches
+*.log
+*.pot
+*.mo
+.cache/
+.mypy_cache/
+.pytest_cache/
+
+# Byte-compiled / build
+build/
+dist/
+*.egg-info/
