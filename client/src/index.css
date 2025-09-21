@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Comic+Neue,wght@0,300;0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@theme {
+  --color-primary-300: oklch(83.7% 0.128 66.29);
+  --color-primary-400: oklch(75% 0.183 55.934);
+  --color-primary-500: oklch(70.5% 0.213 47.604);
+  --color-primary-600: oklch(64.6% 0.222 41.116);
+  --color-primary-700: oklch(55.3% 0.195 38.402);
+}
+
+body {
+  font-family: 'Kalam', 'Comic Neue', cursive;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -122,3 +135,11 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
