@@ -12,6 +12,7 @@
 
 body {
   font-family: 'Kalam', 'Comic Neue', cursive;
+  @apply bg-[url('/img/background.jpg')] bg-repeat min-h-screen;
 }
 
 @custom-variant dark (&:is(.dark *));
