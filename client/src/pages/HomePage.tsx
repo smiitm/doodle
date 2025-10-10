@@ -1,15 +1,31 @@
+import { useEffect, useState } from "react"
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import PlayButton from "@/components/PlayButton"
 import CreateRoomButton from "@/components/CreateRoomButton"
 import JoinPrivateRoom from "../components/JoinPrivateRoom"
 import UserProfile from "@/components/UserProfile"
-import { useState } from "react"
 
 export default function HomePage() {
   const [profile, setProfile] = useState<{ nickname: string; avatar: string }>({
-    nickname: "",
+    nickname: "guest",
     avatar: "/img/avatars/a1.jpg",
   })
+
+  // Load saved profile when page opens
+  useEffect(() => {
+    const savedNickname = localStorage.getItem("nickname")
+    const savedAvatar = localStorage.getItem("avatar")
+
+    if (savedNickname && savedAvatar) {
+      setProfile({ nickname: savedNickname, avatar: savedAvatar })
+    }
+  }, [])
+
+  // Save to localStorage whenever profile changes
+  useEffect(() => {
+    localStorage.setItem("nickname", profile.nickname)
+    localStorage.setItem("avatar", profile.avatar)
+  }, [profile])
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -26,12 +42,12 @@ export default function HomePage() {
               <PlayButton />
             </div>
             <div className="w-1/2">
-              <CreateRoomButton/>
+              <CreateRoomButton nickname={profile.nickname} avatar={profile.avatar} />
             </div>
           </div>
 
           <div className="w-full">
-            <JoinPrivateRoom/>
+            <JoinPrivateRoom nickname={profile.nickname} avatar={profile.avatar} />
           </div>
         </div>
 
