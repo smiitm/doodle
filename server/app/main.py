@@ -6,9 +6,6 @@ from app.socket_manager import sio
 
 app = FastAPI()
 
-# Include routers
-app.include_router(rooms.router)
-
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -18,6 +15,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include REST API routers
+app.include_router(rooms.router)
+
+# Health check endpoint
 @app.get("/healthz")
 async def health_check():
     return {"status": "ok"}

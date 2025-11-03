@@ -30,3 +30,7 @@ class JoinRoomPayload(BaseModel):
     join_code: str
     player_nickname: str
     player_avatar: str
+
+class LeaveRoomPayload(BaseModel):
+    room_id: str
+    player_nickname: str
